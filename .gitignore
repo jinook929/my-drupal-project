@@ -1,0 +1,23 @@
+# Composer-managed dependencies (restored via `composer install`)
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/drush/contrib/
+
+# Environment-specific / sensitive settings (DDEV가 자동 재생성)
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+
+# User-uploaded files
+/web/sites/*/files
+/web/sites/*/private
+
+# Multisite test environment
+/web/sites/simpletest
+
+# ETC
+.DS_Store
+tmp/
