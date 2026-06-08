@@ -1,0 +1,46 @@
+uuid: 7b1857d0-3163-46d0-900c-73401d9efb9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.waterfall.field_hike_duration
+    - field.field.node.waterfall.field_image
+    - field.field.node.waterfall.field_official_website
+    - field.field.node.waterfall.field_walking_and_driving_instru
+    - field.field.node.waterfall.field_waterfall_description
+    - field.field.node.waterfall.field_waterfall_height
+    - field.field.node.waterfall.field_waterfall_video
+    - image.style.medium
+    - node.type.waterfall
+  module:
+    - image
+    - user
+id: node.waterfall.teaser
+targetEntityType: node
+bundle: waterfall
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_hike_duration: true
+  field_official_website: true
+  field_walking_and_driving_instru: true
+  field_waterfall_description: true
+  field_waterfall_height: true
+  field_waterfall_video: true
