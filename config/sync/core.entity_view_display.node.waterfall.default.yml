@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.waterfall.field_walking_and_driving_instru
     - field.field.node.waterfall.field_waterfall_description
     - field.field.node.waterfall.field_waterfall_height
+    - field.field.node.waterfall.field_waterfall_location
     - field.field.node.waterfall.field_waterfall_video
     - image.style.wide
     - node.type.waterfall
@@ -76,6 +77,14 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_waterfall_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
     region: content
   field_waterfall_video:
     type: entity_reference_entity_view
