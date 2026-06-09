@@ -1,0 +1,73 @@
+taxonomies:
+  location:
+    -
+      vid: location
+      tid: '6'
+      langcode: en
+      name: 'North Island'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: c74a7e00-c546-4f82-b84e-f11ba0f73f6a
+    -
+      vid: location
+      tid: '7'
+      langcode: en
+      name: 'South Island'
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 7b393702-dc38-4961-b7b5-fad0aace3260
+  tags:
+    -
+      vid: tags
+      tid: '4'
+      langcode: en
+      name: activity
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: e12777e0-c16d-4dfa-9697-265435cdd46a
+    -
+      vid: tags
+      tid: '1'
+      langcode: en
+      name: blog
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 9836b449-c230-42fd-bdf2-cd3936ea5a98
+    -
+      vid: tags
+      tid: '2'
+      langcode: en
+      name: list
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: f1a7c087-98ad-47fe-a09f-a601d4d6bb19
+    -
+      vid: tags
+      tid: '5'
+      langcode: en
+      name: livestream
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 095e08f6-e806-4fe9-94ed-73212edd1203
+    -
+      vid: tags
+      tid: '3'
+      langcode: en
+      name: news
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: ca64c63b-559a-4024-9998-99f74263d259
