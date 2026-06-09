@@ -7,8 +7,12 @@
 /web/libraries/
 /drush/contrib/
 
-# Environment-specific / sensitive settings (DDEV가 자동 재생성)
-/web/sites/*/settings*.php
+# Environment-specific / sensitive settings.
+# settings.php is tracked so shared settings (e.g. config_sync_directory) reach
+# the whole team. DB credentials and hash_salt live in the ignored,
+# DDEV-generated settings.ddev.php.
+/web/sites/*/settings.ddev.php
+/web/sites/*/settings.local.php
 /web/sites/*/services*.yml
 
 # User-uploaded files
