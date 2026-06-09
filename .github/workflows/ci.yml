@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build & validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: gd, mbstring, pdo, pdo_mysql, dom, xml, curl, opcache
+          tools: composer:v2
+          coverage: none
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --no-check-publish
+
+      - name: Install dependencies (a fresh checkout must install cleanly)
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      # Future quality gates — enable once the tooling is added as dev deps:
+      #
+      # - name: Drupal coding standards (PHPCS)
+      #   run: vendor/bin/phpcs --standard=Drupal,DrupalPractice web/modules/custom web/themes/custom
+      #
+      # - name: Static analysis (PHPStan)
+      #   run: vendor/bin/phpstan analyse web/modules/custom
