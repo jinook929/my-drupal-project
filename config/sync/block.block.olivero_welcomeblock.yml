@@ -11,13 +11,13 @@ dependencies:
 id: olivero_welcomeblock
 theme: olivero
 region: sidebar
-weight: 0
+weight: -6
 provider: null
 plugin: 'block_content:823039d1-3db0-4e5c-b6ef-5530258c7b5e'
 settings:
   id: 'block_content:823039d1-3db0-4e5c-b6ef-5530258c7b5e'
-  label: 'Welcome Block'
-  label_display: '0'
+  label: Welcome!
+  label_display: visible
   provider: block_content
   view_mode: full
 visibility: {  }
