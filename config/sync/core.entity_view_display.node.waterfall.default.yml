@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.waterfall.field_hike_difficulty
     - field.field.node.waterfall.field_hike_duration
     - field.field.node.waterfall.field_image
     - field.field.node.waterfall.field_official_website
@@ -23,6 +24,14 @@ targetEntityType: node
 bundle: waterfall
 mode: default
 content:
+  field_hike_difficulty:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
   field_hike_duration:
     type: number_integer
     label: above

@@ -1,0 +1,14 @@
+uuid: f7e6528d-d08b-4948-8203-f2bb11b675a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.waterfall_specialist
+  module:
+    - user
+id: user_remove_role_action.waterfall_specialist
+label: 'Remove the Waterfall Specialist role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: waterfall_specialist

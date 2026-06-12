@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.waterfall.field_hike_difficulty
     - field.field.node.waterfall.field_hike_duration
     - field.field.node.waterfall.field_image
     - field.field.node.waterfall.field_official_website
@@ -27,6 +28,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hike_difficulty:
+    type: options_select
+    weight: 128
     region: content
     settings: {  }
     third_party_settings: {  }
