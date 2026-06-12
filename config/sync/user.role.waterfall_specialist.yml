@@ -1,0 +1,61 @@
+uuid: 41c9fef7-2fe0-4dab-a335-32d69e2a832a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.page
+    - node.type.waterfall
+  module:
+    - media
+    - node
+    - system
+    - toolbar
+id: waterfall_specialist
+label: 'Waterfall Specialist'
+weight: -7
+is_admin: false
+permissions:
+  - 'access content overview'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'administer node published status'
+  - 'administer nodes'
+  - 'bypass node access'
+  - 'create article content'
+  - 'create media'
+  - 'create page content'
+  - 'create waterfall content'
+  - 'delete all revisions'
+  - 'delete any article content'
+  - 'delete any media'
+  - 'delete any page content'
+  - 'delete any waterfall content'
+  - 'delete article revisions'
+  - 'delete media'
+  - 'delete own article content'
+  - 'delete own page content'
+  - 'delete own waterfall content'
+  - 'delete page revisions'
+  - 'delete waterfall revisions'
+  - 'edit any article content'
+  - 'edit any page content'
+  - 'edit any waterfall content'
+  - 'edit own article content'
+  - 'edit own page content'
+  - 'edit own waterfall content'
+  - 'rebuild node access permissions'
+  - 'revert all revisions'
+  - 'revert article revisions'
+  - 'revert page revisions'
+  - 'revert waterfall revisions'
+  - 'update any media'
+  - 'update media'
+  - 'view all media revisions'
+  - 'view all revisions'
+  - 'view article revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view the administration theme'
+  - 'view waterfall revisions'
