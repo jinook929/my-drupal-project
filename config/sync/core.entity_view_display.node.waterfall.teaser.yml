@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.waterfall.field_hike_difficulty
     - field.field.node.waterfall.field_hike_duration
     - field.field.node.waterfall.field_image
     - field.field.node.waterfall.field_official_website
@@ -39,6 +40,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_hike_difficulty: true
   field_hike_duration: true
   field_official_website: true
   field_walking_and_driving_instru: true

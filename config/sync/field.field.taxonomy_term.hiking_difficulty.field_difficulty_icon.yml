@@ -1,0 +1,29 @@
+uuid: 7f71766a-cd9d-4d96-ac88-f0388f76f0f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_difficulty_icon
+    - media.type.image
+    - taxonomy.vocabulary.hiking_difficulty
+id: taxonomy_term.hiking_difficulty.field_difficulty_icon
+field_name: field_difficulty_icon
+entity_type: taxonomy_term
+bundle: hiking_difficulty
+label: 'Difficulty Icon'
+description: 'Select / Upload an image which represents this difficulty.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
