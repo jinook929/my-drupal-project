@@ -1,7 +1,8 @@
-# my-project — Drupal 11 site
+# my-project — The Waterfall Handbook (Drupal 11)
 
-A Drupal 11 site managed with **DDEV** and **Composer**. Site configuration is
-version-controlled with Drupal's configuration management (`config/sync/`).
+**The Waterfall Handbook**, a Drupal 11 site managed with **DDEV** and **Composer**.
+Site configuration is version-controlled with Drupal's configuration management
+(`config/sync/`).
 
 ## Requirements
 
@@ -44,6 +45,21 @@ ddev launch
 Three layers — **Code** (Composer + custom), **Configuration** (`config/sync`),
 **Content** (database). Code and configuration travel through Git; content does not.
 
+## Site structure
+
+- **Content types** — `waterfall` (the main content: hike duration/difficulty,
+  location, images, official website, brochure), plus the standard `article`
+  and `page`.
+- **Taxonomies** — `location`, `hiking_difficulty` (with an icon field), `tags`.
+- **User roles** — `content_editor`, `waterfall_specialist` (besides the
+  standard administrator/authenticated/anonymous). Visitors can self-register
+  without email verification (`user.settings`).
+- **Custom block types** — `brochure_block` (body + waterfall reference).
+- **Themes** — Olivero (front end) and Claro (admin), both using the site logo
+  (`waterfallhandbook_logo.png`) as logo/favicon.
+- **Key contrib modules** — Admin Toolbar, Structure Sync (shares taxonomy
+  terms via config — see [Database & content](#database--content)), Drush.
+
 ## Daily workflow
 
 ```bash
@@ -58,7 +74,7 @@ git checkout -b feature/short-description
 # ...make changes: edit custom code AND/OR configure via the admin UI...
 
 # Capture admin-UI configuration changes into Git.
-ddev drush config:export -y
+ddev drush config:export -y   # (= ddev drush cex -y)
 git add config web/modules/custom composer.json composer.lock
 git commit -m "Describe the change"
 git push -u origin feature/short-description
@@ -76,8 +92,9 @@ ddev drush deploy
 
 - Structure and settings (content types, fields, views, blocks, roles, …) are
   **configuration**, stored as YAML in `config/sync/`.
-- Export admin-UI changes with `ddev drush config:export`, commit them; others
-  apply them with `ddev drush config:import` (or `ddev drush deploy`).
+- Export admin-UI changes with `ddev drush config:export` (alias `cex`), commit
+  them; others apply them with `ddev drush config:import` (alias `cim`) or
+  `ddev drush deploy`.
 - `config_sync_directory` is set to `../config/sync` in
   `web/sites/default/settings.php` (tracked in Git, so the location is identical
   for everyone).
@@ -102,11 +119,22 @@ configure Drush site aliases so developers can run `ddev drush sql:sync @prod @s
 For a small set of reusable demo content, consider the **Default Content** module
 or a **Recipe** instead of a full dump.
 
+**Exception: taxonomy terms.** Terms are content, but this project shares them
+through Git with the **Structure Sync** module (`structure_sync.data` in
+`config/sync/`):
+
+```bash
+ddev drush export:taxonomies   # (= ddev drush et) capture terms into config — then config:export & commit
+ddev drush import:taxonomies   # (= ddev drush it) load terms after pulling config
+```
+
 ## Useful commands
 
 ```bash
 ddev drush deploy            # updatedb + config:import + cache rebuild + post-deploy hooks
 ddev drush config:status     # show differences between the database and config/sync
-ddev drush cr                # rebuild caches
+ddev drush config:export     # (= ddev drush cex) export active config (DB) to config/sync
+ddev drush config:import     # (= ddev drush cim) import config/sync into the database (CAUTION: overwrites DB config)
+ddev drush cache:rebuild     # (= ddev drush cr) rebuild caches
 ddev composer require drupal/MODULE   # add a contrib module
 ```
