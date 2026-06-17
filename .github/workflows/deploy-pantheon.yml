@@ -1,0 +1,39 @@
+name: Deploy to Pantheon
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up SSH for Pantheon
+        env:
+          PANTHEON_SSH_PRIVATE_KEY: ${{ secrets.PANTHEON_SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$PANTHEON_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa_pantheon
+          chmod 600 ~/.ssh/id_rsa_pantheon
+          ssh-keyscan -p 2222 -t rsa,ecdsa,ed25519 \
+            codeserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374.drush.in \
+            >> ~/.ssh/known_hosts 2>/dev/null
+          cat >> ~/.ssh/config <<EOF
+          Host pantheon-nz-waterfalls
+            HostName codeserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374.drush.in
+            User codeserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374
+            Port 2222
+            IdentityFile ~/.ssh/id_rsa_pantheon
+          EOF
+
+      - name: Push to Pantheon
+        run: |
+          git remote add pantheon \
+            ssh://codeserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374@codeserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374.drush.in:2222/~/repository.git
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa_pantheon -o StrictHostKeyChecking=no" \
+            git push pantheon main:master --force
