@@ -1,0 +1,25 @@
+uuid: 62c117a7-5593-4b66-9d99-fafbf29b62ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.legal
+  module:
+    - system
+  theme:
+    - mercury
+id: mercury_legal
+theme: mercury
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:legal'
+settings:
+  id: 'system_menu_block:legal'
+  label: Legal
+  label_display: visible
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

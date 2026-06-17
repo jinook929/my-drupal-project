@@ -1,0 +1,22 @@
+uuid: e6638836-997e-439c-b4ab-c4fe939795f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - mercury
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: mercury_help
+theme: mercury
+region: content
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

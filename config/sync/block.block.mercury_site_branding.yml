@@ -1,0 +1,25 @@
+uuid: cd686da0-29fd-421a-b851-c4a8179d9639
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mercury
+_core:
+  default_config_hash: '-OAAZDw1OR_UyAEPEKX0Hu4LaZD149vW9PmMnIC-v0o'
+id: mercury_site_branding
+theme: mercury
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

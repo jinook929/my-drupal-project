@@ -1,0 +1,23 @@
+uuid: c001bb0b-93a5-41b5-aeed-ceb2f1136121
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:823039d1-3db0-4e5c-b6ef-5530258c7b5e'
+  module:
+    - block_content
+  theme:
+    - mercury
+id: mercury_welcomeblock
+theme: mercury
+region: content
+weight: -7
+provider: null
+plugin: 'block_content:823039d1-3db0-4e5c-b6ef-5530258c7b5e'
+settings:
+  id: 'block_content:823039d1-3db0-4e5c-b6ef-5530258c7b5e'
+  label: Welcome!
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility: {  }
