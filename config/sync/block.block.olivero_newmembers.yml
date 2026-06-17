@@ -12,7 +12,7 @@ dependencies:
 id: olivero_newmembers
 theme: olivero
 region: sidebar
-weight: -7
+weight: -8
 provider: null
 plugin: 'block_content:c271a724-0efa-48c8-962a-f3013ebb22c3'
 settings:
