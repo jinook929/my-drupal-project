@@ -10,6 +10,3 @@ web_docroot: true
 build:
   composer: true
 
-# Disable Solr (not used).
-search:
-  enabled: false
