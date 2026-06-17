@@ -1,0 +1,15 @@
+api_version: 1
+
+# PHP version running on the Pantheon platform.
+php_version: 8.3
+
+# Docroot (relative to repo root).
+web_docroot: true
+
+# Drupal Composer Managed workflow.
+build:
+  composer: true
+
+# Disable Solr (not used).
+search:
+  enabled: false

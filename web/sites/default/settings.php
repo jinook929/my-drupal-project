@@ -866,6 +866,29 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
   include __DIR__ . '/settings.ddev.php';
 }
 
+// Pantheon environment: wire up DB, hash_salt, and trusted hosts automatically.
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  $settings['hash_salt'] = $_ENV['DRUPAL_HASH_SALT'];
+
+  $databases['default']['default'] = [
+    'driver'    => 'mysql',
+    'database'  => $_ENV['DB_NAME'],
+    'username'  => $_ENV['DB_USER'],
+    'password'  => $_ENV['DB_PASSWORD'],
+    'host'      => $_ENV['DB_HOST'],
+    'port'      => $_ENV['DB_PORT'],
+    'prefix'    => '',
+    'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+    'autoload'  => 'core/modules/mysql/src/Driver/Database/mysql/',
+  ];
+
+  // Trust all Pantheon platform hostnames (*.pantheonsite.io and custom domains).
+  $settings['trusted_host_patterns'][] = '^.+\.pantheonsite\.io$';
+
+  // Pantheon's shared files directory.
+  $settings['file_public_path'] = 'sites/default/files';
+}
+
 /**
  * Load local development override configuration, if available.
  *
