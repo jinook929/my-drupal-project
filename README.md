@@ -55,10 +55,12 @@ Three layers — **Code** (Composer + custom), **Configuration** (`config/sync`)
   standard administrator/authenticated/anonymous). Visitors can self-register
   without email verification (`user.settings`).
 - **Custom block types** — `brochure_block` (body + waterfall reference).
-- **Themes** — Olivero (front end) and Claro (admin), both using the site logo
-  (`waterfallhandbook_logo.png`) as logo/favicon.
-- **Key contrib modules** — Admin Toolbar, Structure Sync (shares taxonomy
-  terms via config — see [Database & content](#database--content)), Drush.
+- **Themes** — `waterfall_olivero` (custom Olivero subtheme, front end) and
+  Claro (admin). Both use `waterfallhandbook_logo.png` as logo/favicon.
+  Custom CSS lives in `web/themes/custom/waterfall_olivero/css/global-styles.css`.
+- **Key contrib modules** — Admin Toolbar, Pathauto (auto URL aliases),
+  Structure Sync (shares taxonomy terms via config), Gin + Mercury (admin UI),
+  Drush.
 
 ## Daily workflow
 
@@ -87,6 +89,78 @@ After a PR merges, everyone updates:
 git checkout main && git pull
 ddev drush deploy
 ```
+
+> **Pantheon auto-deploy:** every push to `main` triggers a GitHub Actions
+> workflow (`.github/workflows/deploy-pantheon.yml`) that force-pushes to
+> Pantheon's Git remote automatically. No manual Pantheon push needed.
+
+## Deployment (Pantheon)
+
+The site is hosted on Pantheon's free **Sandbox** plan.
+
+| Environment | URL |
+| --- | --- |
+| Dev | https://dev-nz-waterfalls.pantheonsite.io |
+
+### How auto-deploy works
+
+`.github/workflows/deploy-pantheon.yml` runs on every push to `main`:
+1. Checks out the repo
+2. Authenticates with Pantheon via `PANTHEON_SSH_PRIVATE_KEY` (GitHub Secret)
+3. Force-pushes `main → master` on Pantheon's Git remote
+4. Pantheon's **Integrated Composer** builds `vendor/`, `web/core/`, contrib
+   modules/themes automatically — nothing extra to do
+
+### Terminus (Pantheon CLI)
+
+Terminus is installed at `~/terminus`. Log in once with a machine token
+(generate at `https://dashboard.pantheon.io/machine-token/create`):
+
+```bash
+~/terminus auth:login --machine-token=<token>
+```
+
+Useful Terminus commands:
+
+```bash
+~/terminus remote:drush nz-waterfalls.dev -- drush deploy    # config:import + cr on Pantheon
+~/terminus remote:drush nz-waterfalls.dev -- cache:rebuild   # (= cr) rebuild Pantheon caches
+~/terminus remote:drush nz-waterfalls.dev -- config:status   # check config drift on Pantheon
+~/terminus env:info nz-waterfalls.dev                        # show environment info / URL
+```
+
+### Syncing the database to Pantheon
+
+After major local DB changes (new content, bulk edits):
+
+```bash
+# 1. Export local DB
+ddev export-db --file=/tmp/nz-waterfalls.sql.gz
+
+# 2. Import to Pantheon (drops existing DB first)
+~/terminus remote:drush nz-waterfalls.dev -- sql:drop --yes
+gunzip -c /tmp/nz-waterfalls.sql.gz | ~/terminus remote:drush nz-waterfalls.dev -- sql:cli
+
+# 3. Rebuild caches
+~/terminus remote:drush nz-waterfalls.dev -- cache:rebuild
+```
+
+### Syncing user-uploaded files to Pantheon
+
+`web/sites/default/files/` is not in Git. Sync manually when new media is
+uploaded locally (exclude auto-generated asset dirs):
+
+```bash
+rsync -rlvz \
+  --exclude=css --exclude=js --exclude=styles --exclude=php --exclude=sync \
+  -e "ssh -p 2222 -i ~/.ssh/id_rsa_pantheon" \
+  web/sites/default/files/ \
+  "dev.c32f5a15-f706-44a5-9139-a84a44f88374@appserver.dev.c32f5a15-f706-44a5-9139-a84a44f88374.drush.in:files/"
+```
+
+The SSH key for Pantheon is `~/.ssh/id_rsa_pantheon` (RSA — Pantheon does not
+support ed25519 keys). The corresponding public key is registered in
+Pantheon → User settings → SSH Keys.
 
 ## Configuration management
 
