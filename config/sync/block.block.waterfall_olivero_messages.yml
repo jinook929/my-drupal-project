@@ -1,0 +1,22 @@
+uuid: 4b0c90c2-8faf-4119-80b9-80b2819e402b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: waterfall_olivero_messages
+theme: waterfall_olivero
+region: highlighted
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

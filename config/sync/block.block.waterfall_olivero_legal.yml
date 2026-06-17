@@ -1,0 +1,25 @@
+uuid: 2f1ba2fb-a79a-4023-b56b-17a1f48cdd87
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.legal
+  module:
+    - system
+  theme:
+    - waterfall_olivero
+id: waterfall_olivero_legal
+theme: waterfall_olivero
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'system_menu_block:legal'
+settings:
+  id: 'system_menu_block:legal'
+  label: Legal
+  label_display: visible
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

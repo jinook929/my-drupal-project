@@ -1,0 +1,22 @@
+uuid: 038e2dbb-c13a-458e-9380-20b9e6b6f7df
+langcode: en
+status: true
+dependencies:
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: waterfall_olivero_primary_local_tasks
+theme: waterfall_olivero
+region: highlighted
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

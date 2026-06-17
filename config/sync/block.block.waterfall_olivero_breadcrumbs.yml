@@ -1,0 +1,22 @@
+uuid: 5016ffd0-cdf6-4975-896b-5e197dc1a548
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: waterfall_olivero_breadcrumbs
+theme: waterfall_olivero
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

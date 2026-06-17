@@ -1,0 +1,20 @@
+uuid: a819c06e-a6c4-4fb6-9f9c-1134f77d2a40
+langcode: en
+status: true
+dependencies:
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: waterfall_olivero_page_title
+theme: waterfall_olivero
+region: content_above
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

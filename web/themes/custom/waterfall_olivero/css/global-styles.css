@@ -1,0 +1,184 @@
+/**
+ * @file
+ * Custom global styles for the Waterfall Olivero subtheme.
+ */
+
+/* Full-width, responsive oEmbed videos (YouTube, etc.). */
+.media-oembed-content {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+/* Full view mode only: cancel Olivero's wide-content breakout (negative margin +
+   fixed width) so the main image fits exactly within the content container.
+   Scoped to .node--view-mode-full so it never touches the teaser SDC, whose
+   image is an intentionally circular thumbnail. */
+article.node--type-waterfall.node--view-mode-full .wide-content {
+  width: 100%;
+  margin-inline: 0;
+}
+
+article.node--type-waterfall.node--view-mode-full .field--name-field-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Exposed filter (Waterfall Listing view) — water-to-forest themed panel.
+   Scoped to .views-exposed-form, which covers both the page and block displays.
+----------------------------------------------------------------------------- */
+.views-exposed-form {
+  --wf-blue: #1b9ae4;
+  --wf-blue-deep: #0f6ca8;
+  --wf-ink: #16323f;
+  --wf-line: #d8ecf6;
+}
+
+.views-exposed-form.form--inline {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.25rem 2rem;
+  margin-block: 1rem 2.5rem;
+  padding: 1.75rem 2rem 2rem;
+  border: 1px solid var(--wf-line);
+  border-radius: 16px;
+  background: linear-gradient(160deg, #f5fbfe 0%, #e9f5fc 100%);
+  box-shadow: 0 18px 40px -24px rgba(15, 108, 168, 0.45);
+}
+
+/* Decorative water-to-forest accent bar along the top edge. */
+.views-exposed-form.form--inline::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(90deg, #1b9ae4 0%, #18c2c2 55%, #6fe0a8 100%);
+}
+
+/* Field labels — small uppercase "field guide" tags. */
+.views-exposed-form .form-item__label {
+  display: block;
+  margin-block-end: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #5a7a89;
+}
+
+/* Hints below each control. */
+.views-exposed-form .form-item__description {
+  margin-block-start: 0.45rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #8aa3b0;
+}
+
+/* Shared select styling. */
+.views-exposed-form select.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 12.5rem;
+  border: 1.5px solid #cfe6f3;
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--wf-ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(16, 50, 63, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.views-exposed-form select.form-select:hover {
+  border-color: #a8d6ee;
+}
+
+.views-exposed-form select.form-select:focus {
+  outline: none;
+  border-color: var(--wf-blue);
+  box-shadow: 0 0 0 3px rgba(27, 154, 228, 0.18);
+}
+
+/* Single-select: fixed height + custom chevron. */
+.views-exposed-form select.form-element--type-select:not([multiple]) {
+  height: 3rem;
+  padding: 0 2.75rem 0 0.95rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231b9ae4' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+}
+
+/* Multi-select listbox: taller, padded, tactile options. */
+.views-exposed-form select[multiple].form-select {
+  height: auto;
+  min-width: 13.5rem;
+  padding: 0.45rem;
+}
+
+.views-exposed-form select[multiple] option {
+  padding: 0.55rem 0.8rem;
+  margin-block-end: 2px;
+  border-radius: 7px;
+  color: var(--wf-ink);
+}
+
+.views-exposed-form select[multiple] option:checked {
+  color: #fff;
+  background-color: var(--wf-blue-deep);
+  background-image: linear-gradient(135deg, #1f9fe6, var(--wf-blue-deep));
+}
+
+/* Search button — confident filled gradient, aligned with the inputs. */
+.views-exposed-form .form-actions {
+  margin: 1.65rem 0 0;
+}
+
+.views-exposed-form .form-actions input.form-submit {
+  height: 3rem;
+  padding-inline: 1.9rem;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f9fe6 0%, var(--wf-blue-deep) 100%);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 18px -7px rgba(15, 108, 168, 0.65);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.views-exposed-form .form-actions input.form-submit:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 12px 24px -8px rgba(15, 108, 168, 0.72);
+}
+
+.views-exposed-form .form-actions input.form-submit:active {
+  transform: translateY(0);
+}
+
+/* Stack on narrow screens. */
+@media (max-width: 34rem) {
+  .views-exposed-form.form--inline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .views-exposed-form select.form-select {
+    width: 100%;
+  }
+
+  .views-exposed-form .form-actions {
+    margin-block-start: 0.25rem;
+  }
+
+  .views-exposed-form .form-actions input.form-submit {
+    width: 100%;
+  }
+}
