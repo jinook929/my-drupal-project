@@ -1,0 +1,22 @@
+uuid: 3bb90959-b42f-4ca8-9b75-2fb8322a3d88
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: waterfall_olivero_help
+theme: waterfall_olivero
+region: content_above
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

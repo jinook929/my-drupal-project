@@ -1,0 +1,20 @@
+uuid: e87c8aa1-77f2-4ae0-8099-fd1bc3707b52
+langcode: en
+status: true
+dependencies:
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: waterfall_olivero_primary_admin_actions
+theme: waterfall_olivero
+region: highlighted
+weight: -7
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

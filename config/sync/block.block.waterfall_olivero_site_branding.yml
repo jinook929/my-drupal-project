@@ -1,0 +1,25 @@
+uuid: 43a20e81-d486-4a28-be77-729916d86efd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - waterfall_olivero
+_core:
+  default_config_hash: '-OAAZDw1OR_UyAEPEKX0Hu4LaZD149vW9PmMnIC-v0o'
+id: waterfall_olivero_site_branding
+theme: waterfall_olivero
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

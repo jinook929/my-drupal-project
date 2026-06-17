@@ -1,0 +1,31 @@
+uuid: 68778646-ad55-4b52-9061-948ecbe9fa37
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c271a724-0efa-48c8-962a-f3013ebb22c3'
+  module:
+    - block_content
+    - user
+  theme:
+    - waterfall_olivero
+id: waterfall_olivero_newmembers
+theme: waterfall_olivero
+region: sidebar
+weight: -8
+provider: null
+plugin: 'block_content:c271a724-0efa-48c8-962a-f3013ebb22c3'
+settings:
+  id: 'block_content:c271a724-0efa-48c8-962a-f3013ebb22c3'
+  label: 'Why join?'
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous
