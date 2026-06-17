@@ -1,4 +1,4 @@
-uuid: d9ef66d7-c16c-4a8e-9f1f-26be98fefd13
+uuid: c001bb0b-93a5-41b5-aeed-ceb2f1136121
 langcode: en
 status: true
 dependencies:
@@ -7,10 +7,10 @@ dependencies:
   module:
     - block_content
   theme:
-    - olivero
-id: olivero_welcomeblock
-theme: olivero
-region: sidebar
+    - mercury
+id: mercury_welcomeblock
+theme: mercury
+region: content
 weight: -7
 provider: null
 plugin: 'block_content:823039d1-3db0-4e5c-b6ef-5530258c7b5e'

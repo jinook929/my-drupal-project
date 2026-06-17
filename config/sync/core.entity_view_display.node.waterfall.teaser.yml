@@ -17,6 +17,7 @@ dependencies:
     - node.type.waterfall
   module:
     - image
+    - text
     - user
 id: node.waterfall.teaser
 targetEntityType: node
@@ -32,19 +33,26 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: -1
+    weight: 0
+    region: content
+  field_waterfall_description:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
 hidden:
   field_hike_difficulty: true
   field_hike_duration: true
   field_official_website: true
   field_walking_and_driving_instru: true
-  field_waterfall_description: true
   field_waterfall_height: true
   field_waterfall_location: true
   field_waterfall_video: true

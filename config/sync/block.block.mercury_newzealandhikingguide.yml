@@ -1,0 +1,28 @@
+uuid: d0e7aaa7-4d8c-4e8d-97ef-faff36b67e4b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:brochure_block:bb0834d1-89d6-4a40-91e9-76fd5d59eaaa'
+  module:
+    - block_content
+    - system
+  theme:
+    - mercury
+id: mercury_newzealandhikingguide
+theme: mercury
+region: content
+weight: -8
+provider: null
+plugin: 'block_content:bb0834d1-89d6-4a40-91e9-76fd5d59eaaa'
+settings:
+  id: 'block_content:bb0834d1-89d6-4a40-91e9-76fd5d59eaaa'
+  label: 'New Zealand Hiking Guide'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /about-us
