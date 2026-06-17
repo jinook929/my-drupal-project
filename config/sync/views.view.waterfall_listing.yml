@@ -479,7 +479,7 @@ display:
             identifier: hd
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
             reduce: false
