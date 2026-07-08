@@ -1,3 +1,21 @@
 api_version: 1
 php_version: 8.3
 web_docroot: true
+
+# Run `drush deploy` automatically after code reaches an environment, so config/DB
+# changes actually apply (a git push alone only ships the files).
+# Script paths are relative to the web docroot, so they omit the `web/` prefix
+# even though the file lives at web/private/scripts/quicksilver/deploy.php.
+workflows:
+  # Fires on code push to an environment (our GitHub Actions -> Pantheon path).
+  sync_code:
+    after:
+      - type: webphp
+        description: Run drush deploy (updatedb + config import + cache rebuild)
+        script: private/scripts/quicksilver/deploy.php
+  # Fires on environment promotion (dev -> test -> live).
+  deploy:
+    after:
+      - type: webphp
+        description: Run drush deploy (updatedb + config import + cache rebuild)
+        script: private/scripts/quicksilver/deploy.php
